@@ -1,0 +1,25 @@
+name: Test CI
+
+on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+        branches: [ "main" ]
+
+jobs:
+    test:
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+            - name: periquisites
+              run: sudo apt install -y git
+            - name: clone_betty
+              run: git clone ${{secrets.BETTY_URL}}
+            - name: install_betty
+              run: |
+                cp -r Betty/* .
+                sudo ./install.sh
+            - name: betty_check
+              run: make betty_check
