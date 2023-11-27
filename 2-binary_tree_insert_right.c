@@ -3,7 +3,8 @@
 
 
 /**
- * binary_tree_insert_right - inserts a node as the right-child of another node.
+ * binary_tree_insert_right - inserts a node as the right-child
+ * of another node.
  * @parent: Pointer to the parent node.
  * @value: data to store in new node.
  *
