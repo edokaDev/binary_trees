@@ -8,6 +8,8 @@ T2_DEP = 2-binary_tree_insert_right.c 2-main.c \
 0-binary_tree_node.c binary_tree_print.c
 T3_DEP = binary_tree_print.c 3-main.c 3-binary_tree_delete.c \
 0-binary_tree_node.c 2-binary_tree_insert_right.c
+T4_DEP = binary_tree_print.c 4-binary_tree_is_leaf.c 4-main.c \
+0-binary_tree_node.c 2-binary_tree_insert_right.c
 
 VALGRIND_FILE = $(word 2,$(MAKECMDGOALS))
 
@@ -37,4 +39,8 @@ task_2 : $(HFILE) $(T2_DEP)
 task_3 : $(HFILE) $(T3_DEP)
 	$(CC) $(CFLAGS) $(T3_DEP) -o out-del
 	-./out-del
+
+task_4 : $(HFILE) $(T4_DEP)
+	$(CC) $(CFLAGS) $(T4_DEP) -o out-leaf
+	-./out-leaf
 
