@@ -21,8 +21,6 @@ jobs:
               run: |
                 cp -r Betty/* .
                 sudo ./install.sh
-                - name: betty_check
-                run: make betty_check
             - name: betty_check
               run: make betty_check
             - name: memory_check
