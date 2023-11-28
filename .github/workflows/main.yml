@@ -14,7 +14,7 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - name: periquisites
-              run: sudo apt install -y git
+              run: sudo apt install -y git valgrind
             - name: clone_betty
               run: git clone ${{secrets.BETTY_URL}}
             - name: install_betty
