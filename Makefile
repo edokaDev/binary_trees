@@ -6,14 +6,22 @@ T1_DEP = 1-binary_tree_insert_left.c 1-main.c \
 binary_tree_print.c 0-binary_tree_node.c
 T2_DEP = 2-binary_tree_insert_right.c 2-main.c \
 0-binary_tree_node.c binary_tree_print.c
+T3_DEP = binary_tree_print.c 3-main.c 3-binary_tree_delete.c \
+0-binary_tree_node.c 2-binary_tree_insert_right.c
+
+VALGRIND_FILE = $(word 2,$(MAKECMDGOALS))
 
 betty_check :
 	betty *.c *.h
 
-# mem_check : task_0 task_1 task_2
-# 	valgrind ./out-node
-# 	valgrind ./out-left
-# 	valgrind ./out-right
+mem_check:
+ifeq ($(VALGRIND_FILE),)
+	$(error Please provide an object file)
+endif
+	valgrind ./$(VALGRIND_FILE)
+
+mem_check_all : task_3
+	valgrind ./out-del
 
 task_0 : $(HFILE) $(T0_DEP)
 	$(CC) $(CFLAGS) $(T0_DEP) -o out-node
@@ -25,3 +33,8 @@ task_1 : $(HFILE) $(T1_DEP)
 task_2 : $(HFILE) $(T2_DEP)
 	$(CC) $(CFLAGS) $(T2_DEP) -o out-right
 	-./out-right
+
+task_3 : $(HFILE) $(T3_DEP)
+	$(CC) $(CFLAGS) $(T3_DEP) -o out-del
+	-./out-del
+
